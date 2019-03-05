@@ -25,3 +25,8 @@ Create a new telegram group and invite all your team mates/friends in it, add yo
 - Fill Keys & Tokens & chat_id values
 - You may need to change path of "id.txt" file in the script (absolute path) to work properly with Cron
 - You may need to run script several times until having the last tweets id (if you receive no more data, then you have latest tweet id and there's no new hacking information yet)
+<br/><br/>
+
+**Related libraries**
+- TwitterAPI (ht<span>tps://github.com/geduldig/TwitterAPI)
+- Telegram-bot (ht<span>tps://github.com/python-telegram-bot/python-telegram-bot)
