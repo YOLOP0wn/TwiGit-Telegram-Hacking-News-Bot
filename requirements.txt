@@ -1,0 +1,4 @@
+telegram-bot=="0.1"
+TwitterApi=="2.5.9"
+requests=="2.20.1"
+datetime=="4.3"
