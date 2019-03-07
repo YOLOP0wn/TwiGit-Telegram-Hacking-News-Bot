@@ -17,6 +17,7 @@ import sys
 import time
 from datetime import date
 import requests
+import re
 
 
 def send(msg, chat_id, token=telegram_token):
@@ -87,6 +88,8 @@ if __name__ == '__main__':
 					temp_id = tweet_id
 			elif name == "full_text":
 				text = value
+				c = re.search("CVE-\d{4}-\d{4,7}", text)
+                                cve = c.group(0) if c else ""
 			elif name == "created_at":
 				dt = value
 			elif name == "expanded_url":
@@ -94,7 +97,16 @@ if __name__ == '__main__':
 
 			#print('%s' % (value))
 
-		tweets += username + "\n" + text + "\n" + link + "\n\n"
+
+	##### DO NOT ADD TWEET IF THE SAME CVE-ID OR URL ALREADY EXIST #####	
+		if cve:
+                        if cve not in tweets:
+                                tweets += username + "\n" + text + "\n" + link + "\n\n"
+                elif link:
+                        if link not in tweets:
+                                tweets += username + "\n" + text + "\n" + link + "\n\n"
+                else:
+                        tweets += username + "\n" + text + "\n" + link + "\n\n"
 
 
 	if temp_id  != 0:
